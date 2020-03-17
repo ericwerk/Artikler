@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  artikler:
+    image: ${DOCKER_REGISTRY-}artikler
+    build:
+      context: .
+      dockerfile: Artikler/Dockerfile
