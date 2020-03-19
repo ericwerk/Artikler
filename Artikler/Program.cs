@@ -20,10 +20,7 @@ namespace Artikler
             using var scope = host.Services.CreateScope();
             var services = scope.ServiceProvider;
             var context = services.GetRequiredService<ArtikelContext>();
-            if (context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
-            {
-                context.Database.Migrate();
-            }
+            context.Database.Migrate();
             host.Run();
         }
 
