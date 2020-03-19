@@ -29,13 +29,11 @@ namespace Artikler.Controllers
         }
 
         [Route("/Artikel")]
-        public IActionResult Documentation()
+        public string Documentation()
         {
             var host = ControllerContext.HttpContext.Request.Host.ToString();
-            var actions = new Dictionary<string, string>();
-            actions.Add("List",  $"{host}/Artikler/List");
-
-            return new JsonResult(actions);
+            var scheme = ControllerContext.HttpContext.Request.Scheme;
+            return $"\nPage through all article headers in the database: {scheme}://{host}/Artikel/List?skip=0&take=10\nLookup a full article, including contents: {scheme}://{host}/Artikel/Get?id=1\nAdd a new article: {scheme}://{host}/Artikel/Create?year=2020&author=Eric+Werk&title=All+work+and+no+play&content=Makes+Eric+a+dull+boy\nUpdate an existing article: {scheme}://{host}/Artikel/Update POST JSON object\nSearch all articles, page through result set: {scheme}://{host}/Artikel/Search?query=Eric&skip=0&take=10";
         }
 
         /// <summary>
@@ -124,7 +122,7 @@ namespace Artikler.Controllers
         /// <param name="query">Søge kriterie</param>
         /// <returns></returns>
         [HttpGet]
-        public Task<List<ArtikelHoved>> Search(string query, int skip = 0, int take = 100)
+        public Task<List<ArtikelHoved>> Search(string query, int skip = 0, int take = 10)
         {
             if (string.IsNullOrEmpty(query))
             {
