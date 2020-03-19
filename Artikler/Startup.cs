@@ -27,7 +27,7 @@ namespace Artikler
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ArtikelContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Artikler")));
+            services.AddDbContext<ArtikelContext>(options => options.UseInMemoryDatabase("Artikler"));
 
             services.AddControllers();
 

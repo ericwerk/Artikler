@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Artikler.Entities;
 
-namespace Artikler.Controllers
+namespace Artikler.Model
 {
     public class ArtikelHoved
     {

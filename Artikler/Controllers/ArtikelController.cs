@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Artikler.Database;
 using Artikler.Entities;
+using Artikler.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -82,6 +82,11 @@ namespace Artikler.Controllers
 
         }
 
+        /// <summary>
+        /// Søg efter artikler
+        /// </summary>
+        /// <param name="query">Søge kriterie</param>
+        /// <returns></returns>
         [HttpGet]
         public Task<List<ArtikelHoved>> Search(string query)
         {
